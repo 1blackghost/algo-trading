@@ -16,25 +16,25 @@ def validate_mobile(mobile):
 def check_password_strength(password):
     if len(password) < 6:
         return False
-        
+
     return True
 
 def check_existing_user(email, mobile):
-    users = users_db.read_user()  
-    
+    users = users_db.read_user()
+
     for user in users:
         if user[2] == email or user[3] == mobile:
-            return True  
-    
-    return False  
+            return True
+
+    return False
 
 def check_cred(email, password):
     users = users_db.read_user()
-    
+
     for user in users:
-        if (user[2] == email or user[3] == email) and user[4] == password:
+        if (user[2] == email or user[3] == email) and user[4] == password and user[5]==1:
             return True, user[0], user[1]
-    
+
     return False, None, None
 
 
@@ -46,28 +46,28 @@ def signup():
         mobile = request.form.get("mobile")
         password = request.form.get("password")
         confirm_password = request.form.get("confirmPassword")
-        
+
         if not validate_email(email):
             return "Invalid email format",400
-        
+
         if not validate_mobile(mobile):
             return "Invalid mobile number format",400
-        
+
         if check_existing_user(email, mobile):
             return "Email or mobile number already exists",409
-        
+
         if not check_password_strength(password):
             return "Password is not strong enough",400
-        
+
         if password != confirm_password:
             return "Passwords do not match",400
-        
+
 
         session["uid"]=users_db.insert_user(business_name,email,mobile,password)
         session["verified"]=0
         #send otp here
         return "User registered successfully"
-    
+
     return render_template("signup.html")
 
 @app.route("/otp",methods=["GET","POST"])
@@ -94,10 +94,10 @@ def otp():
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method=="POST":
-        users = users_db.read_user()  
+        users = users_db.read_user()
         email = request.form.get('email')
         password = request.form.get('password')
-        authen,uid,name=check_cred(email,password) 
+        authen,uid,name=check_cred(email,password)
         if authen:
             session["uid"]=uid
             session["user"]=name
@@ -109,7 +109,7 @@ def login():
 @app.route("/dashboard")
 def dashboard():
     if ("uid" in session) and ("user" in session):
-        return "this is dashboard"
+        return '''this is dashboard <button onclick="window.location='/logout'">Logout</button>'''
     else:
         return redirect(url_for("login"))
 
