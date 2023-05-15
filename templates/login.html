@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/static/loginsignup.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="middle">
+    <div class="account">
+      <h1>Don’t Have an <br>Account?</h1>
+      <button onclick="location.href='/signup'">Create a free account</button>
+    </div>
+  </div>
+  <div class="middle">
+    <div class="login-wall">
+      <img src="/static/logo.png">
+      <h4>The best algotrading platform</h4>
+      <hr>
+      <p id="error" style="color:red"></p>
+      <form id="loginForm">
+        <p>Email Address Or Mobile Number</p>
+        <input type="email" id="email" placeholder="example@gmail.com">
+        <p>Password</p>
+        <input type="password" id="password" placeholder="*****">
+        <button type="submit" class="log-in">Log in</button>
+        <button class="forgot">Forgot password?</button>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    $(document).ready(function() {
+      $('#loginForm').submit(function(e) {
+        e.preventDefault();
+        
+        var email = $('#email').val();
+        var password = $('#password').val();
+        
+        login(email, password);
+      });
+    });
+    
+    function login(email, password) {
+      $.ajax({
+        url: "/login",
+        method: "POST",
+        data: { email: email, password: password },
+        success: function(response) {
+          $("#error").text(response).css("color", "green");
+
+          console.log('Success:', response);
+          window.location.href = '/otp';
+          },
+        error: function(xhr, textStatus, errorThrown) {
+          var errorMessage = xhr.responseText;
+          console.log(errorMessage);
+          $("#error").text(errorMessage);
+          }
+      });
+    }
+  </script>
+</body>
+</html>

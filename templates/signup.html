@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/loginsignup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body style="display: block;">
+    <div class="middle2" style="float: left;">
+        <div class="account">
+            <img class="img" src="/static/logo2.png">
+            <h1>Get Started in your Business journey today with algotrading</h1>
+            <h4 style="font-size: medium;">The best Business platform</h4>
+        </div>
+    </div>
+    <div class="middle">
+        <div class="login-wall2">
+            <img src="/static/logo.png">
+            <hr>
+            <p style="color:red" id="error"></p>
+            <form id="signup-form">
+                <p>Business name</p>
+                <input type="text" id="business-name" placeholder="Enter your Business name">
+                <p>Email address</p>
+                <input type="email" id="email" placeholder="Enter your Email address">
+                <p>Mobile</p>
+                <input type="text" id="mobile" placeholder="Enter your Mobile Number">
+                <p>Password</p>
+                <input type="password" id="password" placeholder="Enter Password">
+                <p>Confirm Password</p>
+                <input type="password" id="confirm-password" placeholder="Re-Enter Password">
+                <button type="submit" class="log-in">Sign up</button>
+                <span>
+                    <div>By clicking on Sign up, you agree to Mr.Biller's <a href="#">Terms and Conditions</a> of Use.</div>
+                </span>
+                <p class="or">or</p>
+                <span>
+                    <div>If you have an account with <a href="/login">Login</a> here.</div>
+                </span>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#signup-form').submit(function(event) {
+                event.preventDefault(); 
+                signUp();
+            });
+        });
+
+        function signUp() {
+            var businessName = $('#business-name').val();
+            var email = $('#email').val();
+            var mobile = $('#mobile').val();
+            var password = $('#password').val();
+            var confirmPassword = $('#confirm-password').val();
+
+            $.ajax({
+                url: '/signup',
+                method: 'POST',
+                data: {
+                    businessName: businessName,
+                    email: email,
+                    mobile: mobile,
+                    password: password,
+                    confirmPassword: confirmPassword
+                },
+                success: function(response) {
+                    $("#error").text(response).css("color", "green");
+
+                    console.log('Success:', response);
+                    window.location.href = '/otp';
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    var errorMessage = xhr.responseText;
+                    console.log(errorMessage);
+                    $("#error").text(errorMessage);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
