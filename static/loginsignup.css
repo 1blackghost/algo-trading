@@ -177,3 +177,46 @@ a:hover{
 .line{
     margin: 0px;
 }
+.load{
+    width: 30px;
+    margin: 0cap;
+    margin-top: 0px;
+    animation: loading 1.5s linear infinite;
+    transition: none;
+}
+@keyframes loading {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+@media only screen and (max-width:700px){
+    body{
+        flex-direction: column;
+    }
+    .middle,.middle2{
+        flex-direction: column;
+        margin: auto;
+        width: fit-content;
+        float: none;
+    }
+    .middle2{
+        position: relative;
+    }
+    .login-wall{
+        margin-top: 25px;
+    }
+    .middle{
+        position: relative;
+    }
+}
+@media screen and (max-width:420px){
+    .login-wall{
+        width: 100vw;
+    }
+    .login-wall2{
+        width: 100vw;
+    }
+}
