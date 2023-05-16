@@ -62,7 +62,12 @@
                 $("#error").text(response).css("color", "green");
 
                 console.log('Success:', response);
-                window.location.href = '/dashboard';
+                if (response=="ok"){
+                  window.location.href="/reset_password";
+                }
+                else{
+                 window.location.href = '/dashboard';
+                }
             },
             error: function(xhr, textStatus, errorThrown) {
                 var errorMessage = xhr.responseText;
