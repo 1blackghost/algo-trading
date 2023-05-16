@@ -76,3 +76,16 @@ input:focus{
 .resend:hover{
     text-decoration: underline;
 }
+@media screen and (max-width:400px) {
+    .container{
+        width: 100vw;
+        margin: auto 25px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+}
+@media screen and (max-width:340px) {
+    .Verify,.resend{
+        width: 80vw;
+    }
+}

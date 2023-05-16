@@ -9,7 +9,8 @@
     <body>
         <header>
             <img src="/static/logo.png">
-            <div class="option">
+            <button class="ham" onclick="ham()"> &#9776;  </button>
+            <div class="option" id="option">
                 <a href="/login">Log-in</a>
                 <a href="/signup">Get Started</a>
             </div>
@@ -19,5 +20,17 @@
             <h1>Get Started in your Bussiness journey<br> today with algotrading</h1>
             <h4 style="font-size: medium;">The best Business platform</h4>
         </div>
+        <script>
+            function ham(){
+                var opt=document.getElementById("option");
+
+                if(opt.style.height=="100px"){
+                    opt.style.height="0px"
+                }
+                else{
+                    opt.style.height="100px"
+                }
+            }
+        </script>
     </body>
 </html>
