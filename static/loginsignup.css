@@ -18,7 +18,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 .account button{
-    width: 300px;
+    width: 240px;
     color: gray;
     background-color: white;
     border: 1px solid gray;
@@ -35,16 +35,13 @@ h1{
     color: rgb(51, 43, 43);
     text-transform: capitalize;
 }
-.middle,.middle2{
+.middle{
     width: 49vw;
     height: 100vh;
     display: flex;
     flex-direction: row;
     float: right;
     background-color: transparent;
-}
-.middle2{
-    position: fixed;
 }
 .login-wall,.login-wall2{
     width:425px;
@@ -183,6 +180,8 @@ a:hover{
     margin-top: 0px;
     animation: loading 1.5s linear infinite;
     transition: none;
+    content: url('/static/load.png');
+    opacity: 0.8;
 }
 @keyframes loading {
     0%{
@@ -194,13 +193,14 @@ a:hover{
 }
 @media only screen and (max-width:700px){
     body{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .middle,.middle2{
         flex-direction: column;
         margin: auto;
         width: fit-content;
         float: none;
+        height: fit-content;
     }
     .middle2{
         position: relative;
@@ -208,8 +208,18 @@ a:hover{
     .login-wall{
         margin-top: 25px;
     }
+    h1{
+        font-size: xx-large;
+    }
     .middle{
         position: relative;
+    }
+    .account button{
+        margin-bottom: 25px;
+    }
+    .img{
+        width: 75px;
+        margin-bottom: 0px;
     }
 }
 @media screen and (max-width:420px){
