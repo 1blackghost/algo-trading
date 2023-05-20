@@ -180,6 +180,8 @@ a:hover{
     margin-top: 0px;
     animation: loading 1.5s linear infinite;
     transition: none;
+    content: url('/static/load.png');
+    opacity: 0.8;
 }
 @keyframes loading {
     0%{
