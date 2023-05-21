@@ -156,7 +156,7 @@ def forgot_password():
                 session.pop("verified")
             return "OTP Sent!"
         else:
-            return "User Doesn't Exists Or Unverfied!"
+            return "User Doesn't Exists Or Unverfied!",400
 
     return render_template("forgot_password.html")
 
