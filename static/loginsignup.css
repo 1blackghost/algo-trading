@@ -36,12 +36,14 @@ h1{
     text-transform: capitalize;
 }
 .middle{
-    width: 49vw;
+    width: 50vw;
     height: 100vh;
     display: flex;
     flex-direction: row;
     float: right;
     background-color: transparent;
+    box-sizing: border-box;
+    margin: auto;
 }
 .login-wall,.login-wall2{
     width:425px;
@@ -51,7 +53,6 @@ h1{
     margin: auto;
     border: 0px;
     text-align: center;
-    margin-left: 0cm;
 }
 .login-wall2{
     margin-top: 0%;
