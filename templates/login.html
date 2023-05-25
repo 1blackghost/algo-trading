@@ -12,11 +12,11 @@
 <body>
   <div class="background" id="background">
     <div class="loginoption" id="loginoption">
-      <div class="z" id="z">
+      <div class="z">
       <div class="opt1">
-      <div class="optionhead">step 1/2 <img src="/static/logo2.png"></div>
+        <div class="optionhead">step 1/2 <img src="/static/logo2.png"></div>
       <div class="heading">which method of trading you prefer ?</div>
-      <div class="subheading">Choose your trading method:algorithm based or copy trading</div>
+      <div class="subheading">Choose your trading method</div>
       <div class="order">
         <button class="opt" onclick="detect('next')">
           <i class="fa-solid fa-chart-line fa-2x"></i>
@@ -28,20 +28,18 @@
         </button>
       </div>
       <div class="subcan"><button class="cancel" onclick="cancel('none')">cancel</button>
-        <button class="go" id="next" disabled onclick="scrollin(1000)">next</button></div>
+        <button class="go" id="next" disabled onclick="scrollin(2000)">next</button></div>
     </div>
     <div class="opt2">
       <div class="optionhead">step 2/2 <img src="/static/logo2.png"></div>
-      <div class="heading"><button id="back" onclick="scrollin(0)"><i class="fa-solid fa-chevron-left fa-2x"></i></button>which trading broker do you prefer ?</div>
+      <div class="heading"><button id="back" onclick="scrollin(0)"><i class="fa-solid fa-chevron-left"></i></button>which trading broker do you prefer ?</div>
       <div class="subheading">Choose your trading broker</div>
       <div class="order">
         <button class="opt" onclick="detect('submit')">
-          <i class="fa-solid fa-chart-line fa-2x"></i>
-          <div class="opttype">algo-trading<div>the best algorithm in the market</div></div>
+          <img src="/static/zerod.png" class="im">
         </button> 
         <button class="opt" onclick="detect('submit')">
-          <i class="fa-solid fa-chalkboard-user fa-2x"></i>
-          <div class="opttype">copy-trading<div>copy from successful traders</div></div>
+          <img src="/static/shonya.png" class="im">
         </button>
       </div>
       <div class="subcan"><button class="cancel" onclick="cancel('none')">cancel</button>

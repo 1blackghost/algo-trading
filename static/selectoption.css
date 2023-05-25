@@ -8,7 +8,7 @@
     display: none;
 }
 .loginoption{
-    width: 750px;
+    width: 760px;
     height: fit-content;
     background-color: white;
     margin: auto;
@@ -25,15 +25,15 @@
     width: 750px;
     height:fit-content;
     position: relative;
-    padding-right: 15px;
+    padding: 25px;
+    padding-top:10px;
 }
-.opt2{
-    padding-left: 30px;
-}
+
 .z{
     display: flex;
     flex-direction: row;
     width: 1500px;
+    position: relative;
 }
 .optionhead{
     height: fit-content;
@@ -44,7 +44,8 @@
     font-weight: lighter;
     text-transform: capitalize;
     color: gray;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    position: relative;
 }
 .optionhead img{
     width: 25px;
@@ -59,10 +60,13 @@
     border: 0cap;
     color: black;
     margin: 0px;
+    padding: 0px;
+    padding-right: 12px;
 }
 #back i{
     color: black;
     margin: 0px;
+    font-size: 30px;
 }
 .heading{
     font-size: xx-large;
@@ -92,6 +96,12 @@
     border-radius: 10px;
     transition: 0.5s;
 }
+.im{
+    width: 175px;
+    height: fit-content;
+    margin: auto;
+    margin-left: 10px;
+}
 .opt:focus{
     border: 3px solid red;
 }
@@ -110,6 +120,11 @@
     font-weight: lighter;
     text-transform: capitalize;
     color: gray;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    width: fit-content;
+    height: 5px;
 }
 .subcan{
     display: flex;
@@ -138,4 +153,47 @@
 i{
     color:rgb(232, 52, 54) ;
     margin: auto 0px;
+}
+@media screen and (max-width:700px){
+    .loginoption{
+        width: 90%;
+    }
+    .z{
+        width: 200%;
+        padding-right: 15px;
+    }
+    .opt1,.opt2{
+        width: 100%;
+        text-align: center;
+    }
+    .optionhead{
+        width:100%;
+        text-align: left;
+    }
+    .order{
+        flex-direction: column;
+        margin: auto;
+    }
+    .heading{
+        font-size: x-large;
+    }
+    .opt{
+        width: 90%;
+        margin: 10px 5%;
+    }
+    .subcan{
+        float: left;
+        display: inline;
+        width: 100%;
+        margin-top: 25px;
+    }
+    .cancel{
+        float: left;
+    }
+    .go{
+        float: right;
+    }
+    #back i{
+        font-size: 25px;
+    }
 }
