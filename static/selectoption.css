@@ -8,14 +8,13 @@
     display: none;
 }
 .loginoption{
-    width: 760px;
+    width: 750px;
     height: fit-content;
     background-color: white;
     margin: auto;
     border-radius: 10px;
     border-top: 3px solid red;
     box-sizing: border-box;
-    padding: 15px;
     overflow: hidden;
     scroll-behavior: smooth;
 }
@@ -24,7 +23,6 @@
     height:fit-content;
     position: relative;
     padding: 25px;
-    padding-top:10px;
 }
 
 .z{
@@ -151,11 +149,9 @@ i{
 @media screen and (max-width:700px){
     .loginoption{
         width: 90%;
-        padding: 0;
     }
     .z{
         width: 200%;
-        padding: 0;
     }
     .opt1,.opt2{
         width: 130%;
