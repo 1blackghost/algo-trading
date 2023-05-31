@@ -57,6 +57,32 @@ h1{
 .login-wall2{
     margin-top: 0%;
 }
+.loginsucess{
+    width: 325px;
+    height: fit-content;
+    background-color: rgba(0, 128, 0, 0.425);
+    border-left: 3px solid green;
+    padding: 12.5px;
+    margin:  25px auto;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(0, 61, 0);
+    text-transform: capitalize;
+    font-size: medium;
+    border-radius: 5px;
+}
+#error{
+    width: 325px;
+    height: fit-content;
+    background-color: rgba(255, 0, 0, 0.473);
+    border-left: 3px solid red;
+    padding: 12.5px;
+    margin:  25px auto;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(138, 1, 1);
+    text-transform: capitalize;
+    font-size: medium;
+    border-radius: 5px;
+}
 img{
     width: 75%;
     height: fit-content;
@@ -66,6 +92,7 @@ img{
     width: 100px;
     margin-bottom: 25px;
 }
+
 h4{
     font-family: 'Poppins', sans-serif;
     margin: 25px 0px;
@@ -133,29 +160,8 @@ a:hover{
     text-align: center;
     line-height: 0px;
     color: #989eb9;
-    
-    
-}
-.or::before{
-    position: absolute;
-    content: " ";
-    display: block;
-    width: 50%;
-    height: 1px;
-    border-top:1px dashed #989eb9 ;
-    left: 0px;
-    margin-left: -20px;
-   
-}
-.or::after{
-    position: absolute;
-    content: " ";
-    display: block;
-    width: 50%;
-    height: 1px;
-    border-top:1px dashed #989eb9 ;
-    right: 0cap;
-    margin-right: -20px;
+    text-transform: uppercase;
+    font-size: large;
 }
 .log-in{
     background-color: rgb(232, 52, 54);
@@ -193,17 +199,14 @@ a:hover{
 }
 @media only screen and (max-width:700px){
     body{
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
-    .middle,.middle2{
+    .middle{
         flex-direction: column;
         margin: auto;
         width: fit-content;
         float: none;
         height: fit-content;
-    }
-    .middle2{
-        position: relative;
     }
     .login-wall{
         margin-top: 25px;
@@ -228,5 +231,11 @@ a:hover{
     }
     .login-wall2{
         width: 100vw;
+    }
+    #error{
+        width: 80vw;
+    }
+    .loginsucess{
+        width: 80vw;
     }
 }
