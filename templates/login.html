@@ -18,11 +18,11 @@
       <div class="heading">which method of trading you prefer?</div>
       <div class="subheading">Choose your trading method</div>
       <div class="order">
-        <button class="opt" onclick="detect('next')">
+        <button class="opt" onclick="detect(0,'next')">
           <i class="fa-solid fa-chart-line fa-2x"></i>
           <div class="opttype">algo-trading<div>the best algorithm in the market</div></div>
         </button> 
-        <button class="opt" onclick="detect('next')">
+        <button class="opt" onclick="detect(1,'next')">
           <i class="fa-solid fa-chalkboard-user fa-2x"></i>
           <div class="opttype">copy-trading<div>copy from successful traders</div></div>
         </button>
@@ -36,10 +36,10 @@
       <i class="fa-solid fa-chevron-left"></i></button>which trading broker do you prefer?</div>
       <div class="subheading">Choose your trading broker</div>
       <div class="order">
-        <button class="opt" onclick="detect('submit')">
+        <button class="opt" onclick="detect(2,'submit')">
           <img src="/static/zerod.png" class="im">
         </button> 
-        <button class="opt" onclick="detect('submit')">
+        <button class="opt" onclick="detect(3,'submit')">
           <img src="/static/shonya.png" class="im">
         </button>
       </div>
@@ -79,8 +79,23 @@
     function cancel(inpu){
       document.getElementById('background').style.display=inpu;
     }
-    function detect(elemid){
+    function detect(x,elemid){
+      let opt=document.querySelectorAll(".opt");
+      let i=0;
+
       document.getElementById(elemid).disabled=false;
+      if(x==0||x==1){
+        for (i=0;i<2;i++){
+          opt[i].style.border="3px solid white";
+        }
+        opt[x].style.border="3px solid red";
+      }
+      if(x==2||x==3){
+        for (i=2;i<4;i++){
+          opt[i].style.border="3px solid white";
+        }
+        opt[x].style.border="3px solid red";
+      }
     }
     $(document).ready(function() {
       $('#loginForm').submit(function(e) {

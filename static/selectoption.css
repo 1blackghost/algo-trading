@@ -99,9 +99,6 @@
     margin: auto;
     margin-left: 10px;
 }
-.opt:focus{
-    border: 3px solid red;
-}
 .opttype{
     font-size: large;
     font-family: 'Poppins', sans-serif;
