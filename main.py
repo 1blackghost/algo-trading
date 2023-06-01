@@ -4,7 +4,7 @@ Main script of the website.
 
 from flask import Flask, render_template
 from flask_cors import CORS
-from authentication import *
+
 
 app = Flask(__name__)
 CORS(app)
