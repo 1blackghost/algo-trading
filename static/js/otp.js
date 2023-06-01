@@ -1,4 +1,5 @@
 $(document).ready(function() {
+        $("#error").hide();
     initializeOTPVerification();
 
     $('.Verify').click(function() {
@@ -33,12 +34,15 @@ $(document).ready(function() {
       method: "POST",
       data: { otp: otp },
       success: function(response) {
-          $("#error").text(response).css("color", "green");
 
           console.log('Success:', response);
           if (response=="ok"){
             window.location.href="/reset_password";
           }
+          else if (response == "redirect") {
+            window.location.href = "/login?msg=True";
+          }
+
           else{
            window.location.href = '/dashboard';
           }
@@ -46,6 +50,8 @@ $(document).ready(function() {
       error: function(xhr, textStatus, errorThrown) {
           var errorMessage = xhr.responseText;
           console.log(errorMessage);
+          $("#error").show();
+
           $("#error").text(errorMessage);
       }
     });

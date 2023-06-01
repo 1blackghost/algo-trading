@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('#loginForm').submit(function(e) {
       e.preventDefault();
+      $("#error").hide();
       
       var email = $('#email').val();
       
@@ -22,6 +23,8 @@ $(document).ready(function() {
       error: function(xhr, textStatus, errorThrown) {
         var errorMessage = xhr.responseText;
         console.log(errorMessage);
+        $("#error").show();
+
         $("#error").text(errorMessage);
         }
     });

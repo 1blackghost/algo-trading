@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="/static/loginsignup.css">
-  <link rel="stylesheet" href="/static/selectoption.css">
+  <link rel="stylesheet" href="/static/css/loginsignup.css">
+  <link rel="stylesheet" href="/static/css/selectoption.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/140e17f580.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
     <div class="loginoption" id="loginoption">
       <div class="z">
       <div class="opt1">
-        <div class="optionhead">step 1/2 <img src="/static/logo2.png"></div>
+        <div class="optionhead">step 1/2 <img src="/static/images/logo2.png"></div>
       <div class="heading">which method of trading you prefer?</div>
       <div class="subheading">Choose your trading method</div>
       <div class="order">
@@ -31,20 +31,20 @@
         <button class="go" id="next" disabled onclick="scrollin(2000)">next</button></div>
     </div>
     <div class="opt2">
-      <div class="optionhead">step 2/2 <img src="/static/logo2.png"></div>
+      <div class="optionhead">step 2/2 <img src="/static/images/logo2.png"></div>
       <div class="heading"><button id="back" onclick="scrollin(0)">
       <i class="fa-solid fa-chevron-left"></i></button>which trading broker do you prefer?</div>
       <div class="subheading">Choose your trading broker</div>
       <div class="order">
         <button class="opt" onclick="detect(2,'submit')">
-          <img src="/static/zerod.png" class="im">
+          <img src="/static/images/zerod.png" class="im">
         </button> 
         <button class="opt" onclick="detect(3,'submit')">
-          <img src="/static/shonya.png" class="im">
+          <img src="/static/images/shonya.png" class="im">
         </button>
       </div>
       <div class="subcan"><button class="cancel" onclick="cancel('none')">cancel</button>
-        <button class="go" disabled id="submit">submit</button></div>
+        <button class="go" disabled id="submit" onclick="send_details()">submit</button></div>
     </div>
     </div>
     </div>
@@ -57,23 +57,25 @@
   </div>
   <div class="middle">
     <div class="login-wall">
-      <img src="/static/logo.png">
+      <img src="/static/images/logo.png">
       <h4>The best algotrading platform</h4>
       <hr>
       <p id="error"></p>
-      <div id="loginsucess" class="loginsucess" style="display: inherit;">account created sucessfully!<br>login to continue</div>
+      {% if msg==True%}
+        <div id="loginsucess" class="loginsucess" style="display: inherit;">account created sucessfully!<br>login to continue</div>
+      {%endif%}
       <form id="loginForm">
         <p>Email Address Or Mobile Number</p>
         <input type="email" id="email" placeholder="example@gmail.com" onfocus="disp()">
         <p>Password</p>
         <input type="password" id="password" placeholder="*****">
-        <button type="submit" class="log-in" onclick="cancel('flex')">Log in</button>
+        <button type="submit" class="log-in">Log in</button>
       </form>
       <button class="forgot" onclick="window.location='/forgot_password'">Forgot password?</button>
 
     </div>
   </div>
-  <script src="/static/login.js">
+  <script src="/static/js/login.js">
   </script>
 
 </body>

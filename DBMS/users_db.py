@@ -26,14 +26,49 @@ def reset_back_to_start() -> None:
                      email TEXT NOT NULL,
                      mobile_number TEXT NOT NULL,
                      password TEXT NOT NULL,
-                     verified INTEGER DEFAULT 0
+                     verified INTEGER DEFAULT 0,
+                     broker TEXT,
+                     method TEXT
                      )''')
 
     conn.commit()
     c.close()
     conn.close()
 
-def update_user(uid, business_name=None, email=None, mobile_number=None, password=None, verified=None) -> None:
+
+def insert_user(business_name="", email="", mobile_number="", password="", verified=0, broker="", method="") -> int:
+    """
+    Insert a new user into the database.
+
+    Args:
+        business_name: Business name of the user.
+        email: Email address of the user.
+        mobile_number: Mobile number of the user.
+        password: Password of the user.
+        verified: Verification status of the user.
+        broker: Broker of the user (optional).
+        method: Method of the user (optional).
+
+    Returns:
+        int: ID of the inserted user.
+    """
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    if verified != 0:
+        verified = 1
+
+    c.execute("INSERT INTO users (business_name, email, mobile_number, password, verified, broker, method) "
+              "VALUES (?, ?, ?, ?, ?, ?, ?)",
+              (business_name, email, mobile_number, password, verified, broker, method))
+    uid = c.lastrowid
+    conn.commit()
+    c.close()
+    conn.close()
+
+    return uid
+
+
+def update_user(uid, business_name=None, email=None, mobile_number=None, password=None, verified=None, broker=None, method=None) -> None:
     """
     Update user information in the database.
 
@@ -44,6 +79,8 @@ def update_user(uid, business_name=None, email=None, mobile_number=None, passwor
         mobile_number: New mobile number (optional).
         password: New password (optional).
         verified: New verification status (optional).
+        broker: New broker (optional).
+        method: New method (optional).
 
     Returns:
         None
@@ -62,6 +99,10 @@ def update_user(uid, business_name=None, email=None, mobile_number=None, passwor
         update_fields.append(("password", password))
     if verified is not None:
         update_fields.append(("verified", verified))
+    if broker is not None:
+        update_fields.append(("broker", broker))
+    if method is not None:
+        update_fields.append(("method", method))
 
     if len(update_fields) > 0:
         update_query = "UPDATE users SET "
@@ -75,33 +116,6 @@ def update_user(uid, business_name=None, email=None, mobile_number=None, passwor
     c.close()
     conn.close()
 
-
-def insert_user(business_name="", email="", mobile_number="", password="",verified=0) -> int:
-    """
-    Insert a new user into the database.
-
-    Args:
-        business_name: Business name of the user.
-        email: Email address of the user.
-        mobile_number: Mobile number of the user.
-        password: Password of the user.
-
-    Returns:
-        int: ID of the inserted user.
-    """
-    conn = sqlite3.connect('users.db')
-    c = conn.cursor()
-    if verified!=0:
-        verified=1
-
-    c.execute("INSERT INTO users (business_name, email, mobile_number, password,verified) VALUES (?,?, ?, ?, ?)",
-              (business_name, email, mobile_number, password,verified))
-    uid = c.lastrowid
-    conn.commit()
-    c.close()
-    conn.close()
-
-    return uid
 
 
 def read_user(uid=-1) -> list:

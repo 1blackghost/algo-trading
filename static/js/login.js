@@ -1,3 +1,4 @@
+var Details={};
 function scrollin(widt){
     document.getElementById('loginoption').scrollLeft=widt;
   }
@@ -17,7 +18,18 @@ function scrollin(widt){
   function detect(x,elemid){
     let opt=document.querySelectorAll(".opt");
     let i=0;
-
+    if (x==0){
+      Details.method="algo";
+    }
+    if (x==1){
+      Details.method="copy";
+    }
+    if (x==2){
+      Details.broker="zerodha";
+    }
+    if (x==3){
+      Details.broker="shoonya";
+    }
     document.getElementById(elemid).disabled=false;
     if(x==0||x==1){
       for (i=0;i<2;i++){
@@ -33,6 +45,13 @@ function scrollin(widt){
     }
   }
   $(document).ready(function() {
+    $("#error").hide();
+    $("#submit").click(function() {
+      if (!$("#submit").prop("disabled")){
+        send_details();
+      }
+
+    });
     $('#loginForm').submit(function(e) {
       e.preventDefault();
       
@@ -43,6 +62,26 @@ function scrollin(widt){
     });
   });
   
+  function send_details() {
+    cancel("none");
+    $.ajax({
+      url: "/change-details",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify(Details),
+      success: function(response) {
+        window.location="/dashboard";        
+
+        },
+      error: function(xhr, textStatus, errorThrown) {
+        var errorMessage = xhr.responseText;
+        console.log(errorMessage);
+        $("#error").show();
+
+        $("#error").text(errorMessage);
+        }
+    });
+  }
   function login(email, password) {
     $.ajax({
       url: "/login",
@@ -52,11 +91,18 @@ function scrollin(widt){
         $("#error").text(response).css("color", "green");
 
         console.log('Success:', response);
-        window.location.href = '/dashboard';
+          if ($("#loginsucess").length) {
+            cancel('flex');
+          } else {
+            window.location.href = '/dashboard';
+          }
+
         },
       error: function(xhr, textStatus, errorThrown) {
         var errorMessage = xhr.responseText;
         console.log(errorMessage);
+        $("#error").show();
+
         $("#error").text(errorMessage);
         }
     });
