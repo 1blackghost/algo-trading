@@ -91,7 +91,7 @@ function scrollin(widt){
         $("#error").text(response).css("color", "green");
 
         console.log('Success:', response);
-          if ($("#loginsucess").length) {
+          if ((response=="need")){
             cancel('flex');
           } else {
             window.location.href = '/dashboard';

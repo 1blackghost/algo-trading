@@ -90,7 +90,7 @@ def signup() -> str:
             session.pop("forgot")
 
         # Send OTP here
-        session["change_details"]=True
+        session["change-details"]=True
         return "User registered successfully"
 
     return render_template("signup.html")
@@ -145,11 +145,18 @@ def login() -> str:
         if authen:
             session["uid"] = uid
             session["user"] = name
-            return "Success!", 200
+            data=users_db.read_user(session["uid"])
+            if (data[6]=="" and data[7]==""):
+                session["change_details"] = True
+                return "need",200
+
+            else:
+                return "Success!", 200
         else:
             return "Credentials Invalid Or Mismatch!", 400
 
     return render_template("login.html")
+
 
 
 
