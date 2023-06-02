@@ -1,7 +1,7 @@
 $(document).ready(function() {
+  $("#error").hide();
     $('#loginForm').submit(function(e) {
       e.preventDefault();
-      $("#error").hide();
       
       var email = $('#email').val();
       
