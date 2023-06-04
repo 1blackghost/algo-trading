@@ -16,7 +16,6 @@ $(document).ready(function() {
       data: { email: email },
       success: function(response) {
         $("#error").text(response).css("color", "green");
-
         console.log('Success:', response);
         window.location.href = '/otp';
         },
@@ -24,18 +23,23 @@ $(document).ready(function() {
         var errorMessage = xhr.responseText;
         console.log(errorMessage);
         $("#error").show();
-
         $("#error").text(errorMessage);
+        window.var1=errorMessage;
         }
     });
   }
   function load(){
+  setTimeout(function load2(){
     var load=document.getElementById("lo");
-    if(document.getElementById("email").value){
-    load.innerHTML='';
+    var email=document.getElementById("email");
+    
+    if(email.value){
     load.innerHTML='<img class="load">';
+    console.log("load");
     }
-    else{
+    if (var1){
       load.innerHTML='Get OTP';
-    }
-  }
+      console.log("no load");
+    } 
+  },500);
+}
