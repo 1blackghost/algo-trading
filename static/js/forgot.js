@@ -21,6 +21,7 @@ $(document).ready(function() {
         $("#error").text(response).css("color", "green");
         console.log('Success:', response);
         window.location.href = '/otp';
+        document.getElementById("lo").innerHTML='Get OTP';
         },
       error: function(xhr, textStatus, errorThrown) {
         var errorMessage = xhr.responseText;
