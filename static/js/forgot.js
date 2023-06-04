@@ -14,6 +14,9 @@ $(document).ready(function() {
       url: "/forgot_password",
       method: "POST",
       data: { email: email },
+      beforeSend: function(){
+        window.var1=0;
+      },
       success: function(response) {
         $("#error").text(response).css("color", "green");
         console.log('Success:', response);
@@ -25,7 +28,7 @@ $(document).ready(function() {
         $("#error").show();
         $("#error").text(errorMessage);
         window.var1=errorMessage;
-        }
+        },
     });
   }
   function load(){
@@ -33,10 +36,11 @@ $(document).ready(function() {
     var load=document.getElementById("lo");
     var email=document.getElementById("email");
     
-    if(email.value){
-    load.innerHTML='<img class="load">';
-    console.log("load");
-    }
+    if(var1==0){
+      load.innerHTML='<img class="load">';
+      console.log("load");
+      document.getElementById("error").style.display="none";
+      }
     if (var1){
       load.innerHTML='Get OTP';
       console.log("no load");
