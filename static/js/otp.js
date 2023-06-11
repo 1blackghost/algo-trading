@@ -1,3 +1,25 @@
+$(document).ready(function(){
+  w=2;
+  i=59;
+  document.getElementById("resend").innerHTML="03:00";
+  inter=setInterval(function (){
+        document.getElementById("resend").innerHTML="0"+w+":"+i;
+        i=i-1;
+        if(i<10){
+          i="0"+i;
+        }
+        if(i==0){
+          i=59;
+          if(w>=0){
+            w=w-1;
+          }
+          if(w==-1){
+            clearInterval(inter);
+            document.getElementById("resend").innerHTML="Re-send";
+          }
+      }
+  },1000);
+});
 $(document).ready(function() {
         $("#error").hide();
     initializeOTPVerification();

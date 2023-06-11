@@ -158,16 +158,33 @@ a:hover{
 }
 .or{
     text-align: center;
-    line-height: 0px;
     color: #989eb9;
     text-transform: uppercase;
     font-size: large;
+    margin: 0px;
 }
-.log-in{
+.log-in, .google{
     background-color: rgb(232, 52, 54);
     color: white;
     border: 0ch;
-    margin-bottom: 25px;
+    margin-bottom: 12.5px;
+    margin-top: 12.5px;
+}
+.google{
+    margin-bottom: 0px;
+    overflow: hidden;
+    text-transform: capitalize;
+    background-color:  #4285f4;
+}
+.google img{
+    width: 30px;
+    height:fit-content;
+    margin: 0px;
+    float: left;
+    background-color: #0051d4;
+    margin: -12.5px;
+    padding: 10.5px;
+    margin-right: -30px;
 }
 .forgot{
     background-color: white;
